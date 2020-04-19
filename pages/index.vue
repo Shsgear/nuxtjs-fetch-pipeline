@@ -26,11 +26,33 @@
 </template>
 
 <script>
+import pipelineConfig from './index.pipeline.config'
 import Logo from '~/components/Logo.vue'
+import NuxtFetchPipeline, {
+  adaptiveFetch,
+  pipelineMixin
+} from '@/utils/nuxt-fetch-pipeline'
+
+const nuxtFetchPipeline = new NuxtFetchPipeline(pipelineConfig)
 
 export default {
   components: {
     Logo
+  },
+  mixins: [pipelineMixin(pipelineConfig)],
+  fetch(ctx) {
+    adaptiveFetch(nuxtFetchPipeline)
+    // const start = Date.now()
+    // const data1 = await getIndex1()
+    // const data2 = await getIndex2()
+    // const timecost = Date.now() - start
+    // console.log(data1, data2, '  timecost: ' + timecost)
+  },
+  async mounted() {
+    // const start = Date.now()
+    // const data3 = await getIndex3()
+    // const timecost = Date.now() - start
+    // console.log(data3, '  timecost: ' + timecost)
   }
 }
 </script>
