@@ -25,9 +25,7 @@ export default class NuxtFetchPipeline {
   runStageJobs(context, stage) {
     const stageConfig = (this.stages && this.stages[stage]) || {}
     const jobs = stageConfig.jobs
-
     if (!jobs) return Promise.resolve
-
     switch (stageConfig.type) {
       case 'parallel':
         return Promise.all(jobs.map((jobName) => this.runJob(jobName, context)))

@@ -5,12 +5,12 @@ export default {
     // 面向SEO渲染需要的 job 集合，一般要求是全部
     seoFetch: {
       type: 'parallel',
-      jobs: ['task1']
+      jobs: ['task1', 'task2']
     },
     // 面向用户首屏渲染需要的最小的 job 集合
     minFetch: {
       type: 'parallel',
-      jobs: []
+      jobs: ['task1']
     },
     // 首屏加载完之后，在 mounted 阶段异步执行的 job 集合
     mounted: {
@@ -27,13 +27,13 @@ export default {
     // 任务1
     task1: {
       task: ({ store, params, query, error, redirect, app, route }) => {
-        console.log('task1')
+        console.log('task111111111')
+      }
+    },
+    task2: {
+      task: () => {
+        console.log('task2')
       }
     }
-    // task2: {
-    //   task: () => {
-
-    //   }
-    // }
   }
 }

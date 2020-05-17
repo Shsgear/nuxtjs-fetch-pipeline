@@ -39,9 +39,9 @@ export default {
   components: {
     Logo
   },
-  mixins: [pipelineMixin(pipelineConfig)],
+  mixins: [pipelineMixin(nuxtFetchPipeline)],
   fetch(ctx) {
-    adaptiveFetch(nuxtFetchPipeline)
+    adaptiveFetch(nuxtFetchPipeline, ctx)
     // const start = Date.now()
     // const data1 = await getIndex1()
     // const data2 = await getIndex2()
